@@ -1,0 +1,28 @@
+-- local status, jdtls = pcall(require, "jdtls")
+-- if not status then
+-- 	return
+-- end
+--
+-- local config = {
+-- 	cmd = { "/home/henrique/.local/share/nvim/mason/bin/jdtls" },
+-- 	root_dir = vim.fs.dirname(vim.fs.find({ ".gradlew", ".git", "mvnw" }, { upward = true })[1]),
+--   init_options =  {
+--     bundles = {
+--       vim.fn.glob("/home/henrique/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar", 1)
+--     }
+--   }
+-- }
+--
+-- config['on_attach'] = function(client, bufnr)
+--   require'keymap'.map_java_keys(bufnr)
+--   require "lsp_signature".on_attach({
+--     bind = true,
+--     padding = '',
+--     handler_opts = {
+--       border = "rounded"
+--     }
+--   }, bufnr)
+--   require('jdtls').setup_dap({ hotcodereplace = 'auto' })
+-- end
+-- jdtls.start_or_attach(config)
+--

@@ -1,0 +1,69 @@
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP actions',
+    callback = function(client, bufnr)
+        -- Create your keybindings here..."
+        local fmt = function(cmd) return function(str) return cmd:format(str) end end
+        local lsp = fmt('<cmd>lua vim.lsp.%s<cr>')
+        local diagnostic = fmt('<cmd>lua vim.diagnostic.%s<cr>')
+        local opts = { buffer = bufnr, remap = false }
+
+        local map = function(m, lhs, rhs)
+            vim.keymap.set(m, lhs, rhs, opts)
+        end
+
+        map('n', 'K', lsp 'buf.hover()')
+        map('n', 'gd', lsp 'buf.definition()')
+        map('n', 'gD', lsp 'buf.declaration()')
+        map('n', 'gi', lsp 'buf.implementation()')
+        map('n', 'gt', lsp 'buf.type_definition()')
+        map('n', 'gr', lsp 'buf.references()')
+        map('n', 'gs', lsp 'buf.signature_help()')
+        map('n', '<F2>', lsp 'buf.rename()')
+        map('n', '<F3>', lsp 'buf.format({async = true})')
+        map('x', '<F3>', lsp 'buf.format({async = true})')
+        map('n', '<leader>ca', lsp 'buf.code_action()')
+
+        if vim.lsp.buf.range_code_action then
+            map('x', '<F4>', lsp 'buf.range_code_action()')
+        else
+            map('x', '<F4>', lsp 'buf.code_action()')
+        end
+
+        map('n', 'gl', diagnostic 'open_float()')
+        map('n', '[d', diagnostic 'goto_prev()')
+        map('n', ']d', diagnostic 'goto_next()')
+        map('n', '<leader>lws', diagnostic 'workspace_symbol()')
+        map("n", "<leader>vd", diagnostic 'workspace_symbol()')
+        map("n", "<leader>vd", diagnostic 'open_float()')
+        map("n", "[d", diagnostic 'goto_next()')
+        map("n", "]d", diagnostic 'goto_prev()')
+        map("n", "<leader>vca", diagnostic 'code_action()')
+        map("n", "<leader>vvr", diagnostic 'references()')
+        map("n", "<leader>vrn", diagnostic 'rename()')
+        map("i", "<-h>", diagnostic 'signature_help()')
+    end
+})
+
+require('mason').setup()
+require('mason-lspconfig').setup({
+    ensure_installed = {
+        'tsserver',
+        'eslint',
+        'lua_ls',
+        'svelte',
+        'prismals',
+        'cssls',
+        'angularls'
+    }
+})
+
+local lspconfig = require('lspconfig')
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+require('mason-lspconfig').setup_handlers({
+    function(server_name)
+        lspconfig[server_name].setup({
+            capabilities = lsp_capabilities,
+        })
+    end,
+})
