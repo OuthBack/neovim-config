@@ -156,5 +156,6 @@ return require('packer').startup(function(use)
   use {'mfussenegger/nvim-dap', tags='0.6.0'}
   use 'rcarriga/cmp-dap' -- No tags
   use { 'mhartington/formatter.nvim' } -- No tags
+  use {"ThePrimeagen/lsp-debug-tools.nvim"} -- No tags
 end)
 
