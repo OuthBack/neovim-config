@@ -87,6 +87,16 @@ local formatterConfig = {
       }
     end
   },
+  sql = {
+    function()
+        return {
+            exe = "sql-formatter",
+            args = {
+                '--fix',
+            }
+        }
+    end
+  },
   ['*'] = {
       -- require("formatter.filetypes.any").lsp_format,
     -- require('formatter.filetypes.any').remove_trailing_whitespace

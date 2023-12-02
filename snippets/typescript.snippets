@@ -1,0 +1,30 @@
+snippet des "describe('thing', function() { ... })" b
+	describe('${1:}', () => {
+		${0:${VISUAL}}
+	});
+snippet it "it('should ', () => { ... })" b
+	it('${1:}', () => {
+		${0:${VISUAL}}
+	});
+snippet bef "before(() => { ... })" b
+	before(() => {
+		${0:${VISUAL}}
+	});
+snippet befe "beforeEach(() => { ... })" b
+	beforeEach(() => {
+		${0:${VISUAL}}
+	});
+snippet aft "after(() => { ... })" b
+	after(() => {
+		${0:${VISUAL}}
+	});
+snippet afte "afterEach(() => { ... })" b
+	afterEach(() => {
+		${0:${VISUAL}}
+	});
+snippet exp "expect(...)" b
+	expect(${1:})${0};
+snippet expe "expect(...).toBe(...)" b
+	expect(${1:}).toBe(${0});
+snippet expd "expect(...).toEqual(...)" b
+	expect(${1:}).toEqual(${0});
