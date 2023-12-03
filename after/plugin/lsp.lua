@@ -62,6 +62,31 @@ local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('mason-lspconfig').setup_handlers({
     function(server_name)
+        if server_name == 'yamlls' then
+            lspconfig[server_name].setup({
+                capabilities = lsp_capabilities, settings = {                                                                                                           
+                    yaml = {                                                                                                           
+                        hover = true,                                                                                                  
+                        format = {                                                                                                     
+                            enable = true,                                                                                             
+                            singleQuote = true,                                                                                        
+                        },                                                                                                             
+                        completion = true,                                                                                             
+                        validate = true,                                                                                               
+                        customTags = { '!Ref scalar' },                                                                       
+                        schemas = {                                                                                                    
+                            ["https://raw.githubusercontent.com/awslabs/goformation/v4.18.2/schema/cloudformation.schema.json"]= "/*",   
+                        },                                                                                                             
+                        schemaStore = {                                                                                                
+                            enable = true,                                                                                             
+                        },                                                                                                             
+                    },                                                                                                                 
+                }          
+
+            })
+            return
+        end
+
         lspconfig[server_name].setup({
             capabilities = lsp_capabilities,
         })

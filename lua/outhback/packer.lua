@@ -47,23 +47,17 @@ return require('packer').startup(function(use)
   --   }
   -- }
   --
-  use {
-    "hrsh7th/nvim-cmp", -- Few Tags
-    config = function ()
-      require'cmp'.setup {
-        snippet = {
-          expand = function(args)
-            require'luasnip'.lsp_expand(args.body)
-          end
-        },
-
-        sources = {
-          { name = 'luasnip' },
-          -- more sources
-        },
-      }
-    end
-  }
+  use({
+	"L3MON4D3/LuaSnip",
+	-- follow latest release.
+	tag = "v2.1.1", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	-- install jsregexp (optional!:).
+	run = "make install_jsregexp"
+    })
+    use {
+        "hrsh7th/nvim-cmp", -- Few Tags
+    }
+  use { 'saadparwaiz1/cmp_luasnip' } -- No tags
   use {
     'williamboman/mason.nvim',
     tag = 'v1.6.0',
@@ -141,8 +135,6 @@ return require('packer').startup(function(use)
       end
   }
   -- use {'mfussenegger/nvim-jdtls', tags='0.2.0' }
-  use {'L3MON4D3/LuaSnip', tags='v2.0.0'}
-  use { 'saadparwaiz1/cmp_luasnip' } -- No tags
   use "rafamadriz/friendly-snippets" -- No tags
   use {
       "kylechui/nvim-surround",
