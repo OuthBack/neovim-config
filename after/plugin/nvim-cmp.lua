@@ -9,7 +9,7 @@ cmp.setup({
   end
 },
   sources = {
-    {name = 'copilot'},
+    -- {name = 'copilot'},
     {name = 'nvim_lsp'},
   },
   mapping = {
