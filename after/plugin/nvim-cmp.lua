@@ -13,7 +13,7 @@ cmp.setup({
     sources = {
         {name = 'nvim_lsp'},
         {name = 'luasnip'},
-        {name = 'copilot'},
+        -- {name = 'copilot'},
     },
     mapping = {
         ['<CR>'] = cmp.mapping.confirm({

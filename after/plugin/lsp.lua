@@ -53,7 +53,8 @@ require('mason-lspconfig').setup({
         'svelte',
         'prismals',
         'cssls',
-        'angularls'
+        'angularls',
+        'solargraph'
     }
 })
 

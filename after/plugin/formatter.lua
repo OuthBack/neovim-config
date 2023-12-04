@@ -130,3 +130,11 @@ formatter.setup(
     log_level = 2,
   }
 )
+
+vim.api.nvim_exec([[
+augroup FormatAutogroup
+  autocmd!
+  autocmd BufWritePost * FormatWrite
+augroup END
+]], false)
+
