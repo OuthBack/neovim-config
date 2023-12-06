@@ -54,7 +54,7 @@ require('mason-lspconfig').setup({
         'prismals',
         'cssls',
         'angularls',
-        'solargraph'
+        'solargraph',
     }
 })
 

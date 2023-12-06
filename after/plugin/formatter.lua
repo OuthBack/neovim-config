@@ -1,5 +1,6 @@
 local vim = vim
 local formatter = require("formatter")
+local util = require("formatter.util")
 local prettierConfig = function()
   return {
     exe = "prettier",
@@ -97,6 +98,25 @@ local formatterConfig = {
         }
     end
   },
+  ruby = {
+    function()
+        return {
+            exe = "rubocop",
+            args = {
+                "--fix-layout",
+                "--stdin",
+                util.escape_path(util.get_current_buffer_file_name()),
+                "--format",
+                "files",
+            },
+            stdin = true,
+            transform = function(text)
+                table.remove(text, 1)
+                table.remove(text, 1)
+                return text
+            end,
+        }    end
+  },
   ['*'] = {
       -- require("formatter.filetypes.any").lsp_format,
     -- require('formatter.filetypes.any').remove_trailing_whitespace
@@ -134,7 +154,10 @@ formatter.setup(
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost * FormatWrite
+  autocmd BufWritePost * FormatWrite 
 augroup END
 ]], false)
+
+vim.keymap.set('n', '<leader>f', '<cmd>FormatWrite<CR>', {})
+vim.keymap.set('x', '<leader>f', '<cmd>FormatWrite<CR>', {})
 
