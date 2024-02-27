@@ -1,3 +1,6 @@
+local nvim_lsp = require("lspconfig")
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(client, bufnr)
@@ -54,7 +57,7 @@ require('mason-lspconfig').setup({
         'prismals',
         'cssls',
         'angularls',
-        'solargraph',
+        -- Solargraph is down below
     }
 })
 
@@ -93,3 +96,51 @@ require('mason-lspconfig').setup_handlers({
         })
     end,
 })
+
+local handlers = {
+    ["textDocument/publishDiagnostics"] = vim.lsp.with(
+        vim.lsp.diagnostic.on_publish_diagnostics, {
+            virtual_text = true
+        }
+    )
+}
+
+nvim_lsp.solargraph.setup {
+    cmd = {
+        "rvm",
+        "@global",
+        "do",
+        "solargraph",
+        "stdio"
+    },
+    filetypes = {
+        "ruby"
+    },
+    flags = {
+        debounce_text_changes = 150
+    },
+    --on_attach = on_attach,
+    root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+    capabilities = capabilities,
+    handlers = handlers,
+    settings = {
+        solargraph = {
+            completion = true,
+            autoformat = false,
+            formatting = true,
+            symbols = true,
+            definitions = true,
+            references = true,
+            folding = true,
+            highlights = true,
+            diagnostics = true,
+            rename = true,
+            -- Enable this when running with docker compose
+            --transport = 'external',
+            --externalServer = {
+            --    host = 'localhost',
+            --    port = '7658',
+            --}
+        }
+    }
+}

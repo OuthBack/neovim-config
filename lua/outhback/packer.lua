@@ -6,15 +6,20 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
   -- Packer can manage itself
   use {'wbthomason/packer.nvim', }
+  use "nvim-lua/plenary.nvim"
   use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.5',
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim', tag='v0.1.3'} }
   }
   use 'Mofiqul/dracula.nvim' -- No versions
   use{'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}, tag='0.9.0'}
   use('nvim-treesitter/playground') -- No versions
-  use('ThePrimeagen/harpoon') -- No versions
+  use {
+      "ThePrimeagen/harpoon",
+      branch = "harpoon2",
+      requires = { {"nvim-lua/plenary.nvim"} }
+  }
   use{'mbbill/undotree', tag='rel_6.1'} 
   use{'tpope/vim-fugitive', tag='v3.7'}
   use {

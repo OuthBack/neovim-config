@@ -3,7 +3,7 @@ local formatter = require("formatter")
 local util = require("formatter.util")
 local prettierConfig = function()
   return {
-    exe = "prettier",
+    exe = "npx prettier",
     args = {"--stdin-filepath", vim.fn.shellescape(vim.api.nvim_buf_get_name(0)), "--double-quote"},
     stdin = true
   }
