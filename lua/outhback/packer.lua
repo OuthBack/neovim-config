@@ -12,14 +12,14 @@ return require('packer').startup(function(use)
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim', tag='v0.1.3'} }
   }
-  use 'Mofiqul/dracula.nvim' -- No versions
-  use{'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'}, tag='0.9.0'}
-  use('nvim-treesitter/playground') -- No versions
   use {
       "ThePrimeagen/harpoon",
       branch = "harpoon2",
       requires = { {"nvim-lua/plenary.nvim"} }
   }
+  use{'Mofiqul/dracula.nvim'} -- No versions
+  use{'nvim-treesitter/nvim-treesitter', run=':TSUpdate', tag='v0.9.2'}
+  use{'nvim-treesitter/playground'} -- No versions
   use{'mbbill/undotree', tag='rel_6.1'} 
   use{'tpope/vim-fugitive', tag='v3.7'}
   use {
@@ -52,13 +52,13 @@ return require('packer').startup(function(use)
   --   }
   -- }
   --
-  use({
+  use{
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
 	tag = "v2.1.1", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 	-- install jsregexp (optional!:).
 	run = "make install_jsregexp"
-    })
+    }
     use {
         "hrsh7th/nvim-cmp", -- Few Tags
     }
@@ -71,6 +71,9 @@ return require('packer').startup(function(use)
       require('mason').setup()
     end
   }
+  use {'mfussenegger/nvim-dap', tags='0.6.0'}
+  use {"rcarriga/nvim-dap-ui", tags='v3.9.3', requires = {"mfussenegger/nvim-dap"} }
+  use {"theHamsta/nvim-dap-virtual-text"} -- No tags
   use {
     "williamboman/mason-lspconfig.nvim",
     tag='v1.11.0'
@@ -102,11 +105,11 @@ return require('packer').startup(function(use)
       require("copilot_cmp").setup()
     end
   }
-  use {"akinsho/toggleterm.nvim", 
-    tag = 'v2.7.1', 
-    config = function()
-    require("toggleterm").setup()
-  end}
+  -- use {"akinsho/toggleterm.nvim", 
+  --   tag = 'v2.7.1', 
+  --   config = function()
+  --   require("toggleterm").setup()
+  -- end}
   -- use {'neoclide/coc.nvim',
   --   tags='0.0.82',
   --   branch = 'release'
@@ -150,9 +153,20 @@ return require('packer').startup(function(use)
           })
       end
   }
-  use {'mfussenegger/nvim-dap', tags='0.6.0'}
   use 'rcarriga/cmp-dap' -- No tags
   use { 'mhartington/formatter.nvim' } -- No tags
   use {"ThePrimeagen/lsp-debug-tools.nvim"} -- No tags
+  -- DEBUGGER ADAPTERS
+  use {
+      "microsoft/vscode-js-debug",
+      opt = true,
+      run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out" 
+  }
+  use {
+      "mxsdev/nvim-dap-vscode-js",
+      tag = "v1.1.0",
+      requires = {"mfussenegger/nvim-dap"}
+  }
 end)
+
 
