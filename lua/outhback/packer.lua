@@ -129,6 +129,7 @@ return require('packer').startup(function(use)
   }
   -- use {'m4xshen/autoclose.nvim'} -- No tags
   use {'gelguy/wilder.nvim',} -- No Tags
+  use {'romgrk/fzy-lua-native',} -- No Tags
   use {
     'numToStr/Comment.nvim',
     tags='0.8.0',
@@ -167,6 +168,14 @@ return require('packer').startup(function(use)
       tag = "v1.1.0",
       requires = {"mfussenegger/nvim-dap"}
   }
-end)
-
+use {
+    'akinsho/flutter-tools.nvim', -- No Tags
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+    config = function ()
+        require("flutter-tools").setup {} -- use defaults
+    end
+}end)
 

@@ -105,6 +105,10 @@ local handlers = {
     )
 }
 
+nvim_lsp.dartls.setup({
+  cmd = { "dart", 'language-server', '--protocol=lsp' },
+})
+
 nvim_lsp.solargraph.setup {
     cmd = {
         "rvm",

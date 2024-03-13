@@ -53,3 +53,6 @@ vim.keymap.set('n', '<C-j>', ':exe v:count1 . "ToggleTerm"<CR>')
 vim.keymap.set('i', '<C-j>', '<esc>:exe v:count1 . "ToggleTerm"<CR>')
 vim.keymap.set('t', '<C-j>', '<esc><cmd>exe v:count1 . "ToggleTerm"<CR>')
 
+vim.keymap.set('c', '<C-p>', '<Nop>')
+vim.keymap.set('c', '<C-n>', '<Nop>')
+
