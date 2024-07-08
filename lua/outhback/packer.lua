@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
       requires = { {"nvim-lua/plenary.nvim"} }
   }
   use{'Mofiqul/dracula.nvim'} -- No versions
-  use{'nvim-treesitter/nvim-treesitter', run=':TSUpdate', tag='v0.9.2'}
+  use{'nvim-treesitter/nvim-treesitter', run=':TSUpdate' } -- tag='v0.9.2'}
   use{'nvim-treesitter/playground'} -- No versions
   use{'mbbill/undotree', tag='rel_6.1'} 
   use{'tpope/vim-fugitive', tag='v3.7'}
