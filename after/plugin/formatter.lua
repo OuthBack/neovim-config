@@ -103,11 +103,8 @@ local formatterConfig = {
         return {
             exe = "rubocop",
             args = {
-                "--fix-layout",
-                "--stdin",
+                "format",
                 util.escape_path(util.get_current_buffer_file_name()),
-                "--format",
-                "files",
             },
             stdin = true,
             transform = function(text)
@@ -116,6 +113,19 @@ local formatterConfig = {
                 return text
             end,
         }    end
+  },
+  python = {
+    function()
+        return {
+            exe = "ruff",
+            args = {
+                "format",
+                "--stdin-filename",
+                util.escape_path(util.get_current_buffer_file_name()),
+            },
+            stdin = true,
+        }    
+    end
   },
   ['*'] = {
       -- require("formatter.filetypes.any").lsp_format,

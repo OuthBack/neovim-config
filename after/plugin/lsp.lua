@@ -109,6 +109,14 @@ nvim_lsp.dartls.setup({
   cmd = { "dart", 'language-server', '--protocol=lsp' },
 })
 
+nvim_lsp.pyright.setup({
+    settings = {
+        python = {
+            pythonPath = vim.fn.exepath("python3"),
+        },
+    },
+})
+
 nvim_lsp.solargraph.setup {
     cmd = {
         "rvm",
