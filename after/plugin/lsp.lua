@@ -117,12 +117,13 @@ nvim_lsp.pyright.setup({
     },
 })
 
+nvim_lsp.rubocop.setup({
+    cmd = { os.getenv( "HOME" ) .. "/.rbenv/shims/rubocop",  "--lsp" }
+})
+
 nvim_lsp.solargraph.setup {
     cmd = {
-        "rvm",
-        "@global",
-        "do",
-        "solargraph",
+        os.getenv( "HOME" ) .. "/.rbenv/shims/solargraph",
         "stdio"
     },
     filetypes = {

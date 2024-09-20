@@ -17,8 +17,8 @@ return require('packer').startup(function(use)
       branch = "harpoon2",
       requires = { {"nvim-lua/plenary.nvim"} }
   }
-  use{'Mofiqul/dracula.nvim'} -- No versions
-  use{'nvim-treesitter/nvim-treesitter', run=':TSUpdate', tag='v0.9.2'}
+  use{'dracula/vim'} -- No versions
+  use{'nvim-treesitter/nvim-treesitter', run=':TSUpdate' } -- tag='v0.9.2'}
   use{'nvim-treesitter/playground'} -- No versions
   use{'mbbill/undotree', tag='rel_6.1'} 
   use{'tpope/vim-fugitive', tag='v3.7'}
@@ -118,8 +118,8 @@ return require('packer').startup(function(use)
     tags='2.20.7',
     "lukas-reineke/indent-blankline.nvim"
   }
-  use {tags='0.42.0','junegunn/fzf'}
-  use 'junegunn/fzf.vim' -- No tags
+  -- use {tags='0.42.0','junegunn/fzf'}
+  -- use 'junegunn/fzf.vim' -- No tags
   use{"folke/todo-comments.nvim",
     tags='stable',
     requires = "nvim-lua/plenary.nvim",
@@ -141,7 +141,7 @@ return require('packer').startup(function(use)
     'windwp/nvim-ts-autotag', -- No tags
     config = function()
       require('nvim-ts-autotag').setup()
-      end
+    end
   }
   -- use {'mfussenegger/nvim-jdtls', tags='0.2.0' }
   use "rafamadriz/friendly-snippets" -- No tags
