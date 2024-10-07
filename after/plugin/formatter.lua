@@ -104,19 +104,28 @@ local formatterConfig = {
             -- exe = os.getenv( "HOME" ) .. "/.rbenv/shims/rubocop",
             exe = os.getenv( "RUBOCOP_PATH" ),
             args = {
-                "--fix-layout",
-                "--stdin",
-                util.escape_path(util.get_current_buffer_file_name()),
+                "--auto-correct",
                 "--format",
                 "files",
+                -- TODO: stdin issue - maybe it's not passing?
+                "--stdin",
+                -- gets the archive name
+                util.escape_path(util.get_current_buffer_file_name()),
+
+                -- gets the absolute path
+                -- vim.fn.shellescape(vim.api.nvim_buf_get_name(0)),
             },
             stdin = true,
             transform = function(text)
                 table.remove(text, 1)
-                table.remove(text, 1)
+                if text[1] == "====================" then
+                    table.remove(text, 1)
+                end
+
                 return text
             end,
-        }    end
+        }
+    end
   },
   python = {
     function()
@@ -162,7 +171,8 @@ formatter.setup(
   {
     logging = true,
     filetype = formatterConfig,
-    log_level = 2,
+    log_level = 0,
+    -- log_level = vim.log.levels.DEBUG,
   }
 )
 

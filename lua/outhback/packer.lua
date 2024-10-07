@@ -177,5 +177,7 @@ use {
     config = function ()
         require("flutter-tools").setup {} -- use defaults
     end
-}end)
+}
+use { 'rcarriga/nvim-notify', tags='v3.14.0'}
+end)
 

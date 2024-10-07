@@ -117,9 +117,9 @@ nvim_lsp.pyright.setup({
     },
 })
 
--- nvim_lsp.rubocop.setup({
---     cmd = { os.getenv( "RUBOCOP_PATH" ),  "--lsp" }
--- })
+nvim_lsp.rubocop.setup({
+    cmd = { os.getenv( "RUBOCOP_PATH" ),  "--lsp" }
+})
 
 nvim_lsp.solargraph.setup {
     cmd = {
