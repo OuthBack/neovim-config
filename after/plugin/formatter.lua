@@ -107,7 +107,6 @@ local formatterConfig = {
                 "--auto-correct",
                 "--format",
                 "files",
-                -- TODO: stdin issue - maybe it's not passing?
                 "--stdin",
                 -- gets the archive name
                 util.escape_path(util.get_current_buffer_file_name()),

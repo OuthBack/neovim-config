@@ -115,7 +115,7 @@ return require('packer').startup(function(use)
   --   branch = 'release'
   -- }
   use {
-    tags='2.20.7',
+    tags='3.8.2',
     "lukas-reineke/indent-blankline.nvim"
   }
   -- use {tags='0.42.0','junegunn/fzf'}
@@ -179,5 +179,13 @@ use {
     end
 }
 use { 'rcarriga/nvim-notify', tags='v3.14.0'}
+use {
+    'rareitems/printer.nvim',
+    config = function()
+        require('printer').setup({
+            keymap = "<leader>l" -- Plugin doesn't have any keymaps by default
+          })
+    end
+}
 end)
 
