@@ -52,7 +52,7 @@ require('mason-lspconfig').setup({
     ensure_installed = {
         'tsserver',
         'eslint',
-        'lua_ls',
+        -- 'lua_ls',
         'svelte',
         'prismals',
         'cssls',
@@ -108,6 +108,10 @@ local handlers = {
 nvim_lsp.dartls.setup({
   cmd = { "dart", 'language-server', '--protocol=lsp' },
 })
+
+nvim_lsp.lua_ls.setup{
+    cmd = { "lua-language-server" }
+}
 
 nvim_lsp.pyright.setup({
     settings = {

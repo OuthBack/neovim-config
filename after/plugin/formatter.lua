@@ -11,13 +11,13 @@ end
 
 local formatterConfig = {
   lua = {
-    -- function()
-    --    return {
-    --      exe = "stylua",
-    --      args = {  "-" },
-    --      stdin = true,
-    --    }
-    --  end,
+    function()
+       return {
+         exe = "stylua",
+         args = {  "-" },
+         stdin = true,
+       }
+     end,
     -- function()
     --   return {
     --     exe = "luafmt",
