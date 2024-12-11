@@ -155,7 +155,7 @@ return require('packer').startup(function(use)
       end
   }
   use 'rcarriga/cmp-dap' -- No tags
-  use { 'mhartington/formatter.nvim' } -- No tags
+  use { 'Outhback/formatter.nvim' } -- No tags
   use {"ThePrimeagen/lsp-debug-tools.nvim"} -- No tags
   -- DEBUGGER ADAPTERS
   use {
@@ -187,5 +187,6 @@ use {
           })
     end
 }
+use { 'MeanderingProgrammer/render-markdown.nvim', tags='v7.5.0' }
 end)
 
