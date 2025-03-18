@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         map('n', 'gD', lsp 'buf.declaration()')
         map('n', 'gi', lsp 'buf.implementation()')
         map('n', 'gt', lsp 'buf.type_definition()')
-        map('n', 'gr', lsp 'buf.references()')
+        map('n', 'gr', '<cmd>Telescope lsp_references<cr>')
         map('n', 'gs', lsp 'buf.signature_help()')
         map('n', '<F2>', lsp 'buf.rename()')
         map('n', '<F3>', lsp 'buf.format({async = true})')
