@@ -149,9 +149,7 @@ return require('packer').startup(function(use)
       "kylechui/nvim-surround",
       tag = "v2.1.0", -- Use for stability; omit to use `main` branch for the latest features
       config = function()
-          require("nvim-surround").setup({
-              -- Configuration here, or leave empty to use defaults
-          })
+          require("nvim-surround").setup()
       end
   }
   use 'rcarriga/cmp-dap' -- No tags
@@ -189,6 +187,10 @@ use {
 }
 use { 'MeanderingProgrammer/render-markdown.nvim', tags='v7.5.0' }
 use { 'nvim-treesitter/nvim-treesitter-context' }
-
+use { "chrisgrieser/nvim-early-retirement" }
+use { 
+    "zeioth/garbage-day.nvim", 
+    requires = { {"neovim/nvim-lspconfig"} }
+}
 end)
 
