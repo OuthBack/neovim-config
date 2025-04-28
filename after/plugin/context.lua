@@ -15,4 +15,4 @@ require'treesitter-context'.setup{
 }
 
 
-vim.api.nvim_set_hl(0, 'TreesitterContext', { guibg = '#272933' })
+vim.api.nvim_set_hl(0, 'TreesitterContext', { bg = '#272933' })

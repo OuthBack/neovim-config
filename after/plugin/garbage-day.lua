@@ -1,3 +1,3 @@
-require("zeioth/garbage-day.nvim").setup({
+require("garbage-day").setup({
     grace_period = 60*30 -- Seconds
 })
