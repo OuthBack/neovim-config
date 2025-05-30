@@ -162,3 +162,5 @@ nvim_lsp.solargraph.setup {
         }
     }
 }
+vim.cmd [[packadd copilot.vim]]
+vim.cmd(':Copilot disable')

@@ -55,4 +55,5 @@ vim.keymap.set('t', '<C-j>', '<esc><cmd>exe v:count1 . "ToggleTerm"<CR>')
 
 vim.keymap.set('c', '<C-p>', '<Nop>')
 vim.keymap.set('c', '<C-n>', '<Nop>')
+vim.keymap.set('n', '<leader>c', '<cmd>CopilotChatOpen<CR>')
 

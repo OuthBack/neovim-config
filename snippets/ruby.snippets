@@ -1,0 +1,16 @@
+snippet def "def ... end" b
+	def ${1:}
+		${0:${VISUAL}}
+	end
+snippet des "describe 'thing' do ... end" b
+	describe "${1:}" do
+		${0:${VISUAL}}
+	end
+snippet it "it 'thing' do ... end" b
+	it "${1:}" do
+		${0:${VISUAL}}
+	end
+snippet bef "before do ... end" b
+	before do
+		${0:${VISUAL}}
+	end

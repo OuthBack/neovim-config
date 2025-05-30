@@ -206,4 +206,22 @@ return require("packer").startup(function(use)
 		-- It's necessary to install
 		-- rocks = { "tiktoken_core" },
 	})
+    use({
+        "Zeioth/hot-reload.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        opts = function()
+            local config_dir = vim.fn.stdpath("config") 
+            return {
+                -- Files to be hot-reloaded when modified.
+                reload_files = {
+                    config_dir .. "lua/outhback/remap.lua",
+                },
+                -- Things to do after hot-reload trigger.
+                reload_callback = function()
+                    vim.cmd(":silent! colorscheme " .. vim.g.default_colorscheme) -- nvim     colorscheme reload command.
+                    vim.cmd(":silent! doautocmd ColorScheme")                     -- heirline colorscheme reload event.
+                end
+            }
+        end
+    })
 end)
