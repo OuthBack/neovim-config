@@ -1,4 +1,4 @@
-local nvim_lsp = require("lspconfig")
+local lspconfig = require("lspconfig")
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local rust_tools = require("rust-tools")
 
@@ -96,7 +96,7 @@ require("mason-lspconfig").setup_handlers({
 			return
 		end
 
-		lspconfig[server_name].setup({
+		vim.lsp.config(server_name, {
 			capabilities = lsp_capabilities,
 		})
 	end,
@@ -108,15 +108,16 @@ local handlers = {
 	}),
 }
 
-nvim_lsp.dartls.setup({
+vim.lsp.config("dartls", {
 	cmd = { "dart", "language-server", "--protocol=lsp" },
 })
 
-nvim_lsp.lua_ls.setup({
+vim.lsp.config("lua_ls", {
 	cmd = { "lua-language-server" },
 })
 
-nvim_lsp.pyright.setup({
+vim.lsp.config("pyright ", {
+    cmd = { "pyright" }, 
 	settings = {
 		python = {
 			pythonPath = vim.fn.exepath("python3"),
@@ -125,11 +126,11 @@ nvim_lsp.pyright.setup({
 })
 
 --  TODO: RUBOCOP NEEDS TO BE INSTALLED GLOBALLY
--- nvim_lsp.rubocop.setup({
+-- vim.lsp.config("rubocop", {
 --     cmd = { os.getenv( "RUBOCOP_PATH" ),  "--lsp" }
 -- })
 
-nvim_lsp.solargraph.setup({
+vim.lsp.config("solargraph", {
 	cmd = {
 		"solargraph",
 		"stdio",
@@ -141,7 +142,7 @@ nvim_lsp.solargraph.setup({
 		debounce_text_changes = 150,
 	},
 	--on_attach = on_attach,
-	root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
+	root_dir = lspconfig.util.root_pattern("Gemfile", ".git", "."),
 	capabilities = capabilities,
 	handlers = handlers,
 	settings = {
@@ -166,7 +167,12 @@ nvim_lsp.solargraph.setup({
 	},
 })
 
-lspconfig.rust_analyzer.setup({
+vim.lsp.config("gopls", {
+    capabilities = lsp_capabilities,
+    autostart = true
+})
+
+vim.lsp.config("rust_analyzer", {
 	-- Server-specific settings. See `:help lspconfig-setup`
 	settings = {
 		["rust-analyzer"] = {},
@@ -184,5 +190,5 @@ rust_tools.setup({
 	},
 })
 
-vim.cmd([[packadd copilot.vim]])
+-- vim.cmd([[packadd copilot.vim]])
 vim.cmd(":Copilot disable")
