@@ -77,11 +77,11 @@ return require("packer").startup(function(use)
 	use({ "theHamsta/nvim-dap-virtual-text" }) -- No tags
 	use({
 		"williamboman/mason-lspconfig.nvim",
-		tag = "v1.11.0",
+		tag = "v2.1.0",
 	})
 	use({
 		"neovim/nvim-lspconfig",
-		tags = "v0.1.6",
+		tag = "v2.5.0",
 	})
 	use({
 		"hrsh7th/cmp-nvim-lsp",
@@ -195,18 +195,6 @@ return require("packer").startup(function(use)
 		requires = { { "neovim/nvim-lspconfig" } },
 	})
 	use({
-		"CopilotC-Nvim/CopilotChat.nvim",
-		requires = {
-			{ "github/copilot.vim" }, -- or zbirenbaum/copilot.lua
-			{ "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-		},
-		config = function()
-			require("CopilotChat").setup()
-		end,
-		-- It's necessary to install
-		-- rocks = { "tiktoken_core" },
-	})
-	use({
 		"Zeioth/hot-reload.nvim",
 		requires = "nvim-lua/plenary.nvim",
 		opts = function()
@@ -227,4 +215,19 @@ return require("packer").startup(function(use)
 
 	use("simrat39/rust-tools.nvim")
 	use("chentoast/marks.nvim")
+    --
+    -- Avante
+    use 'MunifTanjim/nui.nvim'
+    use 'folke/snacks.nvim' -- for modern input UI
+    use 'stevearc/dressing.nvim' -- for enhanced input UI
+    use 'nvim-tree/nvim-web-devicons' -- or use 'echasnovski/mini.icons'
+    use 'HakonHarnes/img-clip.nvim'
+    use {
+        'yetone/avante.nvim',
+        branch = 'main',
+        run = 'make',
+        config = function()
+            require('avante').setup()
+        end
+    }
 end)

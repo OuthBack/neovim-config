@@ -14,19 +14,19 @@ vim.opt.listchars:append "space:⋅"
 vim.opt.listchars:append "eol:↴"
 
 
-require("indent_blankline").setup {
-   show_current_context = true,
-   show_current_context_start = true,
-   char_highlight_list = {
-     "IndentBlanklineIndent1",
-     "IndentBlanklineIndent2",
-     "IndentBlanklineIndent3",
-     "IndentBlanklineIndent4",
-     "IndentBlanklineIndent5",
-     "IndentBlanklineIndent6",
-     "IndentBlanklineContextSpaceChar",
-     "IndentBlanklineContextStart",
-     "IndentBlanklineSpaceChar"
-   },
+require("ibl").setup {
+    indent = {
+        highlight = {
+            "IndentBlanklineIndent1",
+            "IndentBlanklineIndent2",
+            "IndentBlanklineIndent3",
+            "IndentBlanklineIndent4",
+            "IndentBlanklineIndent5",
+            "IndentBlanklineIndent6",
+            "IndentBlanklineContextSpaceChar",
+            "IndentBlanklineContextStart",
+            "IndentBlanklineSpaceChar"
+        },
+    }
 }
 
