@@ -32,27 +32,6 @@ return require("packer").startup(function(use)
 			{ "nvim-lua/plenary.nvim" },
 		},
 	})
-	-- use {
-	--   'VonHeikemen/lsp-zero.nvim',
-	--   branch = 'v2.x',
-	--   requires = {
-	--       -- LSP Support
-	--       {'neovim/nvim-lspconfig'},             -- Required
-	--       {                                      -- Optional
-	--       'williamboman/mason.nvim',
-	--       run = function()
-	--         pcall(vim.cmd, 'MasonUpdate')
-	--       end,
-	--     },
-	--     {'williamboman/mason-lspconfig.nvim'}, -- Optional
-	--
-	--     -- Autocompletion
-	--     {'hrsh7th/nvim-cmp'},     -- Required
-	--     {'hrsh7th/cmp-nvim-lsp'}, -- Required
-	--     {'L3MON4D3/LuaSnip'},     -- Required
-	--   }
-	-- }
-	--
 	use({
 		"L3MON4D3/LuaSnip",
 		-- follow latest release.
@@ -87,40 +66,9 @@ return require("packer").startup(function(use)
 		"hrsh7th/cmp-nvim-lsp",
 	})
 	use({
-		"zbirenbaum/copilot.lua",
-		-- No tags
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({
-				suggestion = { enabled = false },
-				panel = { enabled = false },
-			})
-		end,
-	})
-	use({
-		"zbirenbaum/copilot-cmp",
-		-- No tags
-		after = { "copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup()
-		end,
-	})
-	-- use {"akinsho/toggleterm.nvim",
-	--   tag = 'v2.7.1',
-	--   config = function()
-	--   require("toggleterm").setup()
-	-- end}
-	-- use {'neoclide/coc.nvim',
-	--   tags='0.0.82',
-	--   branch = 'release'
-	-- }
-	use({
 		tags = "3.8.2",
 		"lukas-reineke/indent-blankline.nvim",
 	})
-	-- use {tags='0.42.0','junegunn/fzf'}
-	-- use 'junegunn/fzf.vim' -- No tags
 	use({
 		"folke/todo-comments.nvim",
 		tags = "stable",
@@ -129,7 +77,6 @@ return require("packer").startup(function(use)
 			require("todo-comments").setup({})
 		end,
 	})
-	-- use {'m4xshen/autoclose.nvim'} -- No tags
 	use({ "gelguy/wilder.nvim" }) -- No Tags
 	use({ "romgrk/fzy-lua-native" }) -- No Tags
 	use({
@@ -145,7 +92,6 @@ return require("packer").startup(function(use)
 			require("nvim-ts-autotag").setup()
 		end,
 	})
-	-- use {'mfussenegger/nvim-jdtls', tags='0.2.0' }
 	use("rafamadriz/friendly-snippets") -- No tags
 	use({
 		"kylechui/nvim-surround",
@@ -215,19 +161,4 @@ return require("packer").startup(function(use)
 
 	use("simrat39/rust-tools.nvim")
 	use("chentoast/marks.nvim")
-    --
-    -- Avante
-    use 'MunifTanjim/nui.nvim'
-    use 'folke/snacks.nvim' -- for modern input UI
-    use 'stevearc/dressing.nvim' -- for enhanced input UI
-    use 'nvim-tree/nvim-web-devicons' -- or use 'echasnovski/mini.icons'
-    use 'HakonHarnes/img-clip.nvim'
-    use {
-        'yetone/avante.nvim',
-        branch = 'main',
-        run = 'make',
-        config = function()
-            require('avante').setup()
-        end
-    }
 end)
