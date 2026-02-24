@@ -87,11 +87,11 @@ require("lazy").setup({
     },
     { "theHamsta/nvim-dap-virtual-text" },
     { "rcarriga/cmp-dap" },
-    {
-        "microsoft/vscode-js-debug",
-        lazy = true,
-        build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
-    },
+    -- {
+    --     "microsoft/vscode-js-debug",
+    --     lazy = true,
+    --     build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+    -- },
     {
         "mxsdev/nvim-dap-vscode-js",
         version = "v1.1.0",
