@@ -102,7 +102,6 @@ require("lazy").setup({
     { "lukas-reineke/indent-blankline.nvim", version = "3.8.2" },
     {
         "folke/todo-comments.nvim",
-        version = "stable",
         dependencies = { "nvim-lua/plenary.nvim" },
         opts = {}, -- Chama setup() automaticamente
     },
