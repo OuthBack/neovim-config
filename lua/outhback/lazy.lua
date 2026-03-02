@@ -42,7 +42,6 @@ require("lazy").setup({
         build = ":TSUpdate",
         -- version = "v0.9.2" -- Opcional, descomente se necessário
      Lark},
-    { "nvim-treesitter/playground" },
     { "nvim-treesitter/nvim-treesitter-context" },
 
     -- Cheatsheet
