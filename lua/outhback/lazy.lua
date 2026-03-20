@@ -19,8 +19,8 @@ require("lazy").setup({
     -- Telescope
     {
         "nvim-telescope/telescope.nvim",
-        version = "0.1.5",
-        dependencies = { { "nvim-lua/plenary.nvim", version = "0.1.3" } },
+        version = "0.2.1",
+        dependencies = { { "nvim-lua/plenary.nvim" } },
      Lark},
 
     -- Navegação e UI
