@@ -29,7 +29,9 @@ require("lazy").setup({
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
-    { "dracula/vim" },
+    {
+        "dracula/vim", 
+    },
     { "mbbill/undotree", version = "rel_6.1" },
     { "tpope/vim-fugitive", version = "v3.7" },
     { "romgrk/fzy-lua-native" },
@@ -40,8 +42,18 @@ require("lazy").setup({
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        -- version = "v0.9.2" -- Opcional, descomente se necessário
-     Lark},
+        lazy = false,
+            opts = {
+                ensure_installed = { 'typescript', 'javascript', 'lua' }, -- Automatically install these parsers
+                highlight = {
+                    enable = true, -- Enable syntax highlighting
+                },
+                indent = {
+                    enable = true, -- Enable treesitter-based indentation
+                },
+            },
+
+    },
     { "nvim-treesitter/nvim-treesitter-context" },
 
     -- Cheatsheet
