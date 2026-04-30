@@ -139,6 +139,18 @@ local formatterConfig = {
         }    
     end
   },
+  go = {
+    function()
+        return {
+            exe = "gofmt",
+            args = {
+                ">",
+                util.escape_path(util.get_current_buffer_file_name()),
+            },
+            stdin = true,
+        }    
+    end
+  },
   ['*'] = {
       -- require("formatter.filetypes.any").lsp_format,
     -- require('formatter.filetypes.any').remove_trailing_whitespace

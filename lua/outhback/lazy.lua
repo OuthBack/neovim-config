@@ -43,16 +43,14 @@ require("lazy").setup({
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         lazy = false,
-            opts = {
-                ensure_installed = { 'typescript', 'javascript', 'lua' }, -- Automatically install these parsers
-                highlight = {
-                    enable = true, -- Enable syntax highlighting
-                },
-                indent = {
-                    enable = true, -- Enable treesitter-based indentation
-                },
-            },
-
+        config = function()
+            require('nvim-treesitter').install { 'typescript', 'javascript', 'lua', 'go' }
+            vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            vim.api.nvim_create_autocmd('FileType', {
+                pattern = { '<filetype>' },
+                callback = function() vim.treesitter.start() end,
+            })
+        end,
     },
     { "nvim-treesitter/nvim-treesitter-context" },
 
