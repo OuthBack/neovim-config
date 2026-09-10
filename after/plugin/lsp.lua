@@ -6,6 +6,7 @@ vim.lsp.enable("solargraph")
 vim.lsp.enable("lua_ls")
 vim.lsp.enable("dartls")
 vim.lsp.enable("pyright")
+vim.lsp.enable("devsense-php-ls")
 vim.lsp.enable("gopls")
 
 
